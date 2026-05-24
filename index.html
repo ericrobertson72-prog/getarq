@@ -83,6 +83,12 @@
     .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
     .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
 
+    .hero-logo-img {
+      width: 280px; max-width: 100%;
+      margin-bottom: 28px;
+      display: block;
+    }
+
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -673,10 +679,7 @@
   <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-badge">
-        <span class="hero-badge-dot" aria-hidden="true"></span>
-        Live on construction sites today
-      </div>
+      <img src="logo.png" alt="ArQ — Build More, Faster, Smarter" class="hero-logo-img">
       <h1 class="hero-title">
         Construction runs on chaos,<br>
         <span class="gold underline-gold">Until now!</span>
