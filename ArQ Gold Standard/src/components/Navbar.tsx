@@ -3,9 +3,63 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/arq-logo.png";
 import { useLanguage } from "@/contexts/LanguageContext";
+import type { Lang } from "@/i18n/translations";
+
+/**
+ * Two-button segmented control acting as a radiogroup.
+ * Each button is a real <button> (not a single toggle) so screen readers can
+ * announce both options and aria-pressed reflects which one is active.
+ */
+function LanguageToggle({
+  lang,
+  setLang,
+  size = "md",
+}: {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  size?: "md" | "sm";
+}) {
+  const pad = size === "sm" ? "px-2 py-1" : "px-2.5 py-1.5";
+  const divider = size === "sm" ? "h-3.5" : "h-4";
+  const cls = (active: boolean) =>
+    `${pad} transition-colors ${
+      active
+        ? "bg-primary text-primary-foreground"
+        : "text-muted-foreground hover:text-foreground"
+    }`;
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Language"
+      className="flex items-center gap-0.5 font-mono text-xs uppercase tracking-widest border border-primary/30 hover:border-primary transition-colors overflow-hidden"
+    >
+      <button
+        type="button"
+        role="radio"
+        aria-checked={lang === "sv"}
+        aria-label="Svenska"
+        onClick={() => setLang("sv")}
+        className={cls(lang === "sv")}
+      >
+        SV
+      </button>
+      <span className={`w-px ${divider} bg-primary/20`} aria-hidden="true" />
+      <button
+        type="button"
+        role="radio"
+        aria-checked={lang === "en"}
+        aria-label="English"
+        onClick={() => setLang("en")}
+        className={cls(lang === "en")}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
 
 export default function Navbar() {
-  const { lang, t, toggleLang } = useLanguage();
+  const { lang, t, setLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -63,33 +117,7 @@ export default function Navbar() {
 
           {/* Right: Language toggle + CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Language toggle */}
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-0.5 font-mono text-xs uppercase tracking-widest border border-primary/30 hover:border-primary transition-colors overflow-hidden"
-              aria-label="Toggle language"
-            >
-              <span
-                className={`px-2.5 py-1.5 transition-colors ${
-                  lang === "sv"
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                SV
-              </span>
-              <span className="w-px h-4 bg-primary/20" />
-              <span
-                className={`px-2.5 py-1.5 transition-colors ${
-                  lang === "en"
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                EN
-              </span>
-            </button>
-
+            <LanguageToggle lang={lang} setLang={setLang} />
             <a
               href="#contact"
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-xs font-mono font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
@@ -100,35 +128,13 @@ export default function Navbar() {
 
           {/* Mobile: language toggle + hamburger */}
           <div className="lg:hidden flex items-center gap-2">
+            <LanguageToggle lang={lang} setLang={setLang} size="sm" />
             <button
-              onClick={toggleLang}
-              className="flex items-center gap-0.5 font-mono text-xs uppercase tracking-widest border border-primary/30 hover:border-primary transition-colors overflow-hidden"
-              aria-label="Toggle language"
-            >
-              <span
-                className={`px-2 py-1 transition-colors ${
-                  lang === "sv"
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground"
-                }`}
-              >
-                SV
-              </span>
-              <span className="w-px h-3.5 bg-primary/20" />
-              <span
-                className={`px-2 py-1 transition-colors ${
-                  lang === "en"
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground"
-                }`}
-              >
-                EN
-              </span>
-            </button>
-            <button
+              type="button"
               className="text-foreground p-2 -mr-2"
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
             >
               {menuOpen ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
             </button>

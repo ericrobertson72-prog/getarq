@@ -1,6 +1,11 @@
 export type Lang = "sv" | "en";
 
 const sv = {
+  meta: {
+    title: "ArQ — Bygg mer. Snabbare. Smartare.",
+    description:
+      "Exekveringssystemet för dig som faktiskt bygger. Mindre papper. Mer framsteg. Boka demo.",
+  },
   nav: {
     problem: "Problemet",
     system: "Systemet",
@@ -168,6 +173,11 @@ const sv = {
 };
 
 const en = {
+  meta: {
+    title: "ArQ — Build More. Faster. Smarter.",
+    description:
+      "The execution system built for the people who actually build. Less paperwork, more progress. Book a demo now.",
+  },
   nav: {
     problem: "The Problem",
     system: "The System",
