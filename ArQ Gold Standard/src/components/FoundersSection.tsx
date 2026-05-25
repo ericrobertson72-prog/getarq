@@ -1,37 +1,24 @@
 import { motion } from "framer-motion";
-
-const founders = [
-  {
-    name: "Andreas Eliasson",
-    title: "Co-founder & CTO",
-    text: "20+ years on Nordic sites. Built the domain logic that powers ArQ.",
-    tag: "Domain Moat",
-    initials: "AE",
-  },
-  {
-    name: "Eric Robertson",
-    title: "Co-founder & CEO",
-    text: "Drives the rollout across the Nordics and the new category we're building.",
-    tag: "Commercial Engine",
-    initials: "ER",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function FoundersSection() {
+  const { t } = useLanguage();
+  const f = t.founders;
+
   return (
     <section id="crew" className="bg-card py-24 md:py-32">
       <div className="container mx-auto px-6">
         <div className="mb-14">
-          <div className="sticker mb-6">◆ The Crew</div>
+          <div className="sticker mb-6">{f.tag}</div>
           <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] text-foreground leading-[0.95]">
-            TWO FOUNDERS.<br />
-            <span className="text-primary">ONE MISSION.</span>
+            {f.h2line1}<br />
+            <span className="text-primary">{f.h2accent}</span>
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-px bg-primary/15">
-          {founders.map((f, i) => (
+          {f.members.map((member, i) => (
             <motion.div
-              key={f.name}
+              key={member.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -40,15 +27,17 @@ export default function FoundersSection() {
             >
               <div className="flex items-start gap-6 mb-6">
                 <div className="w-20 h-20 bg-primary/10 border border-primary/40 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <span className="font-display text-3xl text-primary group-hover:text-primary-foreground">{f.initials}</span>
+                  <span className="font-display text-3xl text-primary group-hover:text-primary-foreground">
+                    {member.initials}
+                  </span>
                 </div>
                 <div>
-                  <h3 className="font-display text-3xl text-foreground">{f.name}</h3>
-                  <p className="font-mono text-xs text-primary uppercase tracking-widest mt-1">{f.title}</p>
+                  <h3 className="font-display text-3xl text-foreground">{member.name}</h3>
+                  <p className="font-mono text-xs text-primary uppercase tracking-widest mt-1">{member.title}</p>
                 </div>
               </div>
-              <p className="text-muted-foreground text-base mb-6">{f.text}</p>
-              <span className="sticker">{f.tag}</span>
+              <p className="text-muted-foreground text-base mb-6">{member.text}</p>
+              <span className="sticker">{member.tag}</span>
             </motion.div>
           ))}
         </div>

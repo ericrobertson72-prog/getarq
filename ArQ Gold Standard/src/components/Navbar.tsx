@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/arq-logo.png";
-
-const navLinks = [
-  { label: "The Problem", href: "#problem" },
-  { label: "The System", href: "#system" },
-  { label: "Crew", href: "#crew" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
+  const { lang, t, toggleLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: t.nav.problem, href: "#problem" },
+    { label: t.nav.system, href: "#system" },
+    { label: t.nav.crew, href: "#crew" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -20,7 +22,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -42,6 +43,7 @@ export default function Navbar() {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between h-16 px-6">
+          {/* Left: Logo + nav links */}
           <div className="flex items-center gap-8">
             <a href="#" className="flex items-center">
               <img src={logo} alt="ArQ" className="h-7 w-auto brightness-0 invert" />
@@ -59,20 +61,78 @@ export default function Navbar() {
             </div>
           </div>
 
-          <a
-            href="#contact"
-            className="hidden lg:inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-xs font-mono font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
-          >
-            Book Demo →
-          </a>
+          {/* Right: Language toggle + CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-0.5 font-mono text-xs uppercase tracking-widest border border-primary/30 hover:border-primary transition-colors overflow-hidden"
+              aria-label="Toggle language"
+            >
+              <span
+                className={`px-2.5 py-1.5 transition-colors ${
+                  lang === "sv"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                SV
+              </span>
+              <span className="w-px h-4 bg-primary/20" />
+              <span
+                className={`px-2.5 py-1.5 transition-colors ${
+                  lang === "en"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                EN
+              </span>
+            </button>
 
-          <button
-            className="lg:hidden text-foreground p-2 -mr-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
-          </button>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground text-xs font-mono font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
+            >
+              {t.nav.bookDemo}
+            </a>
+          </div>
+
+          {/* Mobile: language toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-0.5 font-mono text-xs uppercase tracking-widest border border-primary/30 hover:border-primary transition-colors overflow-hidden"
+              aria-label="Toggle language"
+            >
+              <span
+                className={`px-2 py-1 transition-colors ${
+                  lang === "sv"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground"
+                }`}
+              >
+                SV
+              </span>
+              <span className="w-px h-3.5 bg-primary/20" />
+              <span
+                className={`px-2 py-1 transition-colors ${
+                  lang === "en"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground"
+                }`}
+              >
+                EN
+              </span>
+            </button>
+            <button
+              className="text-foreground p-2 -mr-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -94,11 +154,7 @@ export default function Navbar() {
                 exit="hidden"
                 variants={{
                   hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.08,
-                    },
-                  },
+                  visible: { transition: { staggerChildren: 0.08 } },
                 }}
               >
                 {navLinks.map((l, i) => (
@@ -137,10 +193,10 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="block w-full text-center px-6 py-4 bg-primary text-primary-foreground text-sm font-mono font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
                 >
-                  Book Demo →
+                  {t.nav.bookDemo}
                 </a>
                 <p className="text-center mt-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  Live on sites in SE / FI
+                  {t.nav.liveOnSites}
                 </p>
               </motion.div>
             </div>

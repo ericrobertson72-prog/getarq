@@ -1,18 +1,15 @@
 import { motion } from "framer-motion";
-
-const stats = [
-  { k: "3+", v: "Active pilots" },
-  { k: "SE / FI", v: "On real sites" },
-  { k: "2015", v: "Building since" },
-  { k: "~90", v: "Proprietary functions" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function PilotsSection() {
+  const { t } = useLanguage();
+  const p = t.pilots;
+
   return (
     <section id="pilots" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-px bg-primary/15">
-          {stats.map((s, i) => (
+          {p.stats.map((s, i) => (
             <motion.div
               key={s.k}
               initial={{ opacity: 0, y: 20 }}
@@ -28,10 +25,7 @@ export default function PilotsSection() {
         </div>
 
         <div className="mt-16 grid md:grid-cols-2 gap-6">
-          {[
-            { q: "Finally a system that talks the language we actually use on site.", who: "Daniel Karlström", role: "Project Manager · Salbohed Bygg · FI" },
-            { q: "We stopped chasing paper. Started chasing progress.", who: "Project Manager", role: "AE Byggkvalitet · SE" },
-          ].map((t, i) => (
+          {p.testimonials.map((t, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
