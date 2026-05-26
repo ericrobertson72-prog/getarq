@@ -9,7 +9,6 @@ const sv = {
   nav: {
     problem: "Problemet",
     system: "Systemet",
-    crew: "Teamet",
     contact: "Kontakt",
     bookDemo: "Boka Demo →",
     liveOnSites: "Live på platser i SE / FI",
@@ -117,27 +116,6 @@ const sv = {
       },
     ],
   },
-  founders: {
-    tag: "◆ Teamet",
-    h2line1: "TVÅ GRUNDARE.",
-    h2accent: "ETT UPPDRAG.",
-    members: [
-      {
-        name: "Andreas Eliasson",
-        title: "Medgrundare & CTO",
-        text: "20+ år på nordiska byggplatser. Byggde domänlogiken som driver ArQ.",
-        tag: "Domänvall",
-        initials: "AE",
-      },
-      {
-        name: "Eric Robertson",
-        title: "Medgrundare & VD",
-        text: "Driver lanseringen i Norden och den nya kategori vi bygger.",
-        tag: "Kommersiell motor",
-        initials: "ER",
-      },
-    ],
-  },
   contact: {
     tag: "→ Vi ses",
     h2line1: "BOKA",
@@ -164,7 +142,6 @@ const sv = {
     links: [
       { label: "Problem", href: "#problem" },
       { label: "System", href: "#system" },
-      { label: "Team", href: "#crew" },
       { label: "Kontakt", href: "#contact" },
     ],
     copy: "© 2025 ArQ AB · getarq.se",
@@ -181,7 +158,6 @@ const en = {
   nav: {
     problem: "The Problem",
     system: "The System",
-    crew: "Crew",
     contact: "Contact",
     bookDemo: "Book Demo →",
     liveOnSites: "Live on sites in SE / FI",
@@ -289,27 +265,6 @@ const en = {
       },
     ],
   },
-  founders: {
-    tag: "◆ The Crew",
-    h2line1: "TWO FOUNDERS.",
-    h2accent: "ONE MISSION.",
-    members: [
-      {
-        name: "Andreas Eliasson",
-        title: "Co-founder & CTO",
-        text: "20+ years on Nordic sites. Built the domain logic that powers ArQ.",
-        tag: "Domain Moat",
-        initials: "AE",
-      },
-      {
-        name: "Eric Robertson",
-        title: "Co-founder & CEO",
-        text: "Drives the rollout across the Nordics and the new category we're building.",
-        tag: "Commercial Engine",
-        initials: "ER",
-      },
-    ],
-  },
   contact: {
     tag: "→ Let's talk",
     h2line1: "BOOK",
@@ -336,7 +291,6 @@ const en = {
     links: [
       { label: "Problem", href: "#problem" },
       { label: "System", href: "#system" },
-      { label: "Crew", href: "#crew" },
       { label: "Contact", href: "#contact" },
     ],
     copy: "© 2025 ArQ AB · getarq.se",

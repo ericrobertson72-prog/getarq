@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+# Trigger on every push to main, plus manual runs via the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Minimum permissions for the official Pages deploy actions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; queue further runs rather than canceling them
+# so we don't lose a deploy if two pushes land back-to-back.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Source lives in a subfolder with a space in the name. Quote it everywhere.
+    defaults:
+      run:
+        working-directory: "ArQ Gold Standard"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: "ArQ Gold Standard/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # path is resolved from repo root, not working-directory
+          path: "ArQ Gold Standard/dist"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

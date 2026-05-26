@@ -66,7 +66,6 @@ export default function Navbar() {
   const navLinks = [
     { label: t.nav.problem, href: "#problem" },
     { label: t.nav.system, href: "#system" },
-    { label: t.nav.crew, href: "#crew" },
     { label: t.nav.contact, href: "#contact" },
   ];
 
