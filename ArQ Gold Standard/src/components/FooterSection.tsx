@@ -42,10 +42,10 @@ export default function FooterSection() {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:eric@getarq.se"
+              href="mailto:hello@getarq.se"
               className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
             >
-              eric@getarq.se
+              hello@getarq.se
             </a>
           </div>
         </div>

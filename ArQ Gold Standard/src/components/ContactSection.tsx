@@ -28,14 +28,14 @@ export default function ContactSection() {
 
             <div className="mt-12 space-y-4">
               <a
-                href="mailto:eric@getarq.se"
+                href="mailto:hello@getarq.se"
                 className="flex items-center justify-between border-b border-primary/20 py-4 group hover:border-primary transition-colors"
               >
                 <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
                   {c.labelEmail}
                 </span>
                 <span className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
-                  eric@getarq.se →
+                  hello@getarq.se →
                 </span>
               </a>
               <a
