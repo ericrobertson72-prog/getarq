@@ -8,6 +8,8 @@ export default function PilotsSection() {
   return (
     <section id="pilots" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
+
+        {/* Stats row */}
         <div className="grid md:grid-cols-4 gap-px bg-primary/15">
           {p.stats.map((s, i) => (
             <motion.div
@@ -24,22 +26,37 @@ export default function PilotsSection() {
           ))}
         </div>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
-          {p.testimonials.map((t, i) => (
+        {/* Testimonials — 2×2 grid */}
+        <div className="mt-16 grid sm:grid-cols-2 gap-px bg-primary/10">
+          {p.testimonials.map((testimonial, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="border-l-2 border-primary p-8 bg-card"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="relative bg-card p-8 md:p-10 flex flex-col justify-between gap-6"
             >
-              <p className="font-display text-2xl md:text-3xl text-foreground mb-6 leading-tight">"{t.q}"</p>
-              <p className="font-mono text-xs text-primary uppercase tracking-widest">{t.who}</p>
-              <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mt-1">{t.role}</p>
+              {/* Decorative quote mark */}
+              <span
+                className="absolute top-4 right-6 font-display text-7xl text-primary/10 leading-none select-none pointer-events-none"
+                aria-hidden="true"
+              >
+                "
+              </span>
+
+              <p className="font-display text-xl md:text-2xl text-foreground leading-snug relative z-10">
+                "{testimonial.q}"
+              </p>
+
+              <div>
+                <p className="font-mono text-xs text-primary uppercase tracking-widest">{testimonial.who}</p>
+                <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest mt-1">{testimonial.role}</p>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

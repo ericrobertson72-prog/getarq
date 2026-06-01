@@ -105,14 +105,24 @@ const sv = {
     ],
     testimonials: [
       {
-        q: "Äntligen ett system som pratar språket vi faktiskt använder på plats.",
-        who: "Daniel Karlström",
-        role: "Projektledare · Salbohed Bygg · FI",
+        q: "If this is an MVP, then it is incredibly comprehensive and well done.",
+        who: "Henrik Ljungberg",
+        role: "Development Lead, Autodesk Expert · SKANSKA",
       },
       {
-        q: "Vi slutade jaga papper. Började jaga framsteg.",
-        who: "Projektledare",
-        role: "AE Byggkvalitet · SE",
+        q: "It is basically work preparation on steroids, and that is the most important moment.",
+        who: "Lotta Vibeck",
+        role: "Digitalization Expert · ReBid, Bygglyftet",
+      },
+      {
+        q: "ArQ has revolutionized how we handle projects. We save countless hours every week on administration.",
+        who: "Lucas Ingbro",
+        role: "Construction Manager & CEO · AE Byggkvalitet",
+      },
+      {
+        q: "ArQ makes sure you actually report, instead of just not doing it.",
+        who: "Daniel Karlström",
+        role: "Project Manager · Finland",
       },
     ],
   },
@@ -254,14 +264,24 @@ const en = {
     ],
     testimonials: [
       {
-        q: "Finally a system that talks the language we actually use on site.",
-        who: "Daniel Karlström",
-        role: "Project Manager · Salbohed Bygg · FI",
+        q: "If this is an MVP, then it is incredibly comprehensive and well done.",
+        who: "Henrik Ljungberg",
+        role: "Development Lead, Autodesk Expert · SKANSKA",
       },
       {
-        q: "We stopped chasing paper. Started chasing progress.",
-        who: "Project Manager",
-        role: "AE Byggkvalitet · SE",
+        q: "It is basically work preparation on steroids, and that is the most important moment.",
+        who: "Lotta Vibeck",
+        role: "Digitalization Expert · ReBid, Bygglyftet",
+      },
+      {
+        q: "ArQ has revolutionized how we handle projects. We save countless hours every week on administration.",
+        who: "Lucas Ingbro",
+        role: "Construction Manager & CEO · AE Byggkvalitet",
+      },
+      {
+        q: "ArQ makes sure you actually report, instead of just not doing it.",
+        who: "Daniel Karlström",
+        role: "Project Manager · Finland",
       },
     ],
   },
