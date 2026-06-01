@@ -1,22 +1,37 @@
-import { useState, FormEvent } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-export default function ContactSection() {
-  const { t } = useLanguage();
-  const c = t.contact;
-  const [submitted, setSubmitted] = useState(false);
+// Tally embed script loader — idempotent, safe to call multiple times.
+function loadTally() {
+  if (typeof window === "undefined") return;
+  if ((window as any).Tally) {
+    (window as any).Tally.loadEmbeds();
+    return;
+  }
+  if (document.querySelector('script[src*="tally.so/widgets/embed.js"]')) return;
+  const s = document.createElement("script");
+  s.src = "https://tally.so/widgets/embed.js";
+  s.async = true;
+  s.onload = () => (window as any).Tally?.loadEmbeds();
+  document.head.appendChild(s);
+}
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+export default function ContactSection() {
+  const { t, lang } = useLanguage();
+  const c = t.contact;
+
+  useEffect(() => {
+    loadTally();
+  }, []);
 
   return (
     <section id="contact" className="relative py-16 md:py-24 bg-background overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-40 -z-10" />
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12">
+
+          {/* Left — heading + contact links */}
           <div className="lg:col-span-6">
             <div className="sticker mb-6">{c.tag}</div>
             <h2 className="font-display text-[clamp(3rem,9vw,8rem)] text-foreground leading-[0.9]">
@@ -40,6 +55,8 @@ export default function ContactSection() {
               </a>
               <a
                 href="https://www.getarq.se"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-between border-b border-primary/20 py-4 group hover:border-primary transition-colors"
               >
                 <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
@@ -52,6 +69,7 @@ export default function ContactSection() {
             </div>
           </div>
 
+          {/* Right — Tally embed */}
           <div className="lg:col-span-6 lg:col-start-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -60,66 +78,18 @@ export default function ContactSection() {
               transition={{ duration: 0.5 }}
               className="bg-card border border-primary/15 p-8 md:p-10 corner-brackets"
             >
-              {submitted ? (
-                <div className="py-16 text-center">
-                  <div className="font-display text-5xl text-primary mb-3">{c.successTitle}</div>
-                  <p className="text-muted-foreground">{c.successSub}</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest block mb-2">
-                      {c.f01}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full px-0 py-2 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground font-display text-2xl"
-                      placeholder={c.p01}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest block mb-2">
-                      {c.f02}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      className="w-full px-0 py-2 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground font-display text-2xl"
-                      placeholder={c.p02}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest block mb-2">
-                      {c.f03}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      className="w-full px-0 py-2 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground font-display text-2xl"
-                      placeholder={c.p03}
-                    />
-                  </div>
-                  <div>
-                    <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest block mb-2">
-                      {c.f04}
-                    </label>
-                    <textarea
-                      rows={3}
-                      className="w-full px-0 py-2 bg-transparent border-0 border-b border-border text-foreground placeholder:text-muted-foreground text-base resize-none"
-                      placeholder={c.p04}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full mt-6 py-5 bg-primary text-primary-foreground font-mono font-bold text-sm uppercase tracking-widest hover:bg-foreground transition-colors"
-                  >
-                    {c.submit}
-                  </button>
-                </form>
-              )}
+              <iframe
+                key={lang}
+                data-tally-src="https://tally.so/embed/RGkrll?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                loading="lazy"
+                width="100%"
+                height="400"
+                title="Book a demo"
+                style={{ border: "none" }}
+              />
             </motion.div>
           </div>
+
         </div>
       </div>
     </section>
