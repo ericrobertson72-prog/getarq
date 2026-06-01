@@ -41,7 +41,7 @@ const sv = {
     items: [
       {
         no: "01",
-        head: "Excel dödar ditt projekt.",
+        head: "5-8 frånkopplade system.",
         text: "Planer i en fil. Avvikelser i en annan app. Fakturor ingenstans. Ingen ser hela bilden.",
       },
       {
@@ -194,7 +194,7 @@ const en = {
     items: [
       {
         no: "01",
-        head: "Excel is killing your project.",
+        head: "5-8 disconnected systems.",
         text: "Plans in one file. Deviations in another app. Invoices nowhere. Nobody sees the whole picture.",
       },
       {
