@@ -97,12 +97,6 @@ const sv = {
     tags: ["▲ Fältet först", "● Nordiskbyggt", "■ Inga krumbukter", "◆ Byggt för gänget"],
   },
   pilots: {
-    stats: [
-      { k: "3+", v: "Aktiva piloter" },
-      { k: "SE / FI", v: "På riktiga platser" },
-      { k: "2015", v: "Bygger sedan" },
-      { k: "~90", v: "Egna funktioner" },
-    ],
     testimonials: [
       {
         q: "If this is an MVP, then it is incredibly comprehensive and well done.",
@@ -256,12 +250,6 @@ const en = {
     tags: ["▲ Field-first", "● Nordic-built", "■ No BS", "◆ Made for the crew"],
   },
   pilots: {
-    stats: [
-      { k: "3+", v: "Active pilots" },
-      { k: "SE / FI", v: "On real sites" },
-      { k: "2015", v: "Building since" },
-      { k: "~90", v: "Proprietary functions" },
-    ],
     testimonials: [
       {
         q: "If this is an MVP, then it is incredibly comprehensive and well done.",
