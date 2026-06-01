@@ -64,7 +64,7 @@ const sv = {
     tag: "● Systemet",
     h2line1: "EN APP.",
     h2accent: "HELA BYGGET.",
-    sub: "Aktivitet. Kvalitet. Ekonomi. Kopplat till nordiska standarder (SBEF, BSAB, CoClass). Byggt för att köras i leret, inte i styrelserummet.",
+    sub: "Aktivitet. Kvalitet. Ekonomi. Kopplat till nordiska standarder (SBEF, BSAB, CoClass). Byggt för att köras på bygget, inte i styrelserummet.",
     screens: [
       { tag: "01 / Översikt", title: "Realtidskontroll på plats" },
       { tag: "02 / Projekt", title: "Alla jobb, ett ställe" },
@@ -97,6 +97,8 @@ const sv = {
     tags: ["▲ Fältet först", "● Nordiskbyggt", "■ Inga krumbukter", "◆ Byggt för gänget"],
   },
   pilots: {
+    heading: "Hört från våra",
+    headingAccent: "Piloter",
     testimonials: [
       {
         q: "If this is an MVP, then it is incredibly comprehensive and well done.",
@@ -250,6 +252,8 @@ const en = {
     tags: ["▲ Field-first", "● Nordic-built", "■ No BS", "◆ Made for the crew"],
   },
   pilots: {
+    heading: "Heard from our",
+    headingAccent: "Pilots",
     testimonials: [
       {
         q: "If this is an MVP, then it is incredibly comprehensive and well done.",

@@ -8,6 +8,13 @@ export default function PilotsSection() {
   return (
     <section id="pilots" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
+
+        <div className="mb-14">
+          <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] text-foreground leading-[0.95]">
+            {p.heading} <span className="text-primary">{p.headingAccent}.</span>
+          </h2>
+        </div>
+
         <div className="grid sm:grid-cols-2 gap-px bg-primary/10">
           {p.testimonials.map((testimonial, i) => (
             <motion.div
