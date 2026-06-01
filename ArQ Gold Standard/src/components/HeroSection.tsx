@@ -20,7 +20,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 dot-grid opacity-50" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="container mx-auto px-6 pt-32 pb-16 md:pb-24 relative py-[12px]">
+      <motion.div style={{ opacity }} className="container mx-auto px-6 pt-32 pb-8 md:pb-12 relative">
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
             <motion.div

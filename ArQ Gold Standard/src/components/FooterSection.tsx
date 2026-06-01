@@ -20,7 +20,7 @@ export default function FooterSection() {
             <p className="text-muted-foreground text-sm max-w-xs">{f.tagline}</p>
           </div>
 
-          <div className="md:col-span-4 grid grid-cols-2 gap-x-6 gap-y-3">
+          <div className="md:col-span-4 grid grid-cols-2 gap-x-4 gap-y-2 md:gap-x-6 md:gap-y-3">
             {f.links.map((l) => (
               <a
                 key={l.label}
@@ -34,7 +34,7 @@ export default function FooterSection() {
 
           <div className="md:col-span-3 flex md:justify-end items-center gap-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/get-arq/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"

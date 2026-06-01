@@ -13,7 +13,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 bg-background overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 bg-background overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-40 -z-10" />
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12">
@@ -39,14 +39,14 @@ export default function ContactSection() {
                 </span>
               </a>
               <a
-                href="https://getarq.se"
+                href="https://www.getarq.se"
                 className="flex items-center justify-between border-b border-primary/20 py-4 group hover:border-primary transition-colors"
               >
                 <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
                   {c.labelWeb}
                 </span>
                 <span className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
-                  getarq.se →
+                  www.getarq.se →
                 </span>
               </a>
             </div>

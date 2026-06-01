@@ -118,7 +118,7 @@ const sv = {
       {
         q: "ArQ makes sure you actually report, instead of just not doing it.",
         who: "Daniel Karlström",
-        role: "Project Manager · Finland",
+        role: "HSE Manager · Finland",
       },
     ],
   },
@@ -150,7 +150,7 @@ const sv = {
       { label: "System", href: "#system" },
       { label: "Kontakt", href: "#contact" },
     ],
-    copy: "© 2025 ArQ AB · getarq.se",
+    copy: "© 2025 ArQ AB · www.getarq.se",
     built: "Byggt i Norden ▲ För fältet",
   },
 };
@@ -273,7 +273,7 @@ const en = {
       {
         q: "ArQ makes sure you actually report, instead of just not doing it.",
         who: "Daniel Karlström",
-        role: "Project Manager · Finland",
+        role: "HSE Manager · Finland",
       },
     ],
   },
@@ -305,7 +305,7 @@ const en = {
       { label: "System", href: "#system" },
       { label: "Contact", href: "#contact" },
     ],
-    copy: "© 2025 ArQ AB · getarq.se",
+    copy: "© 2025 ArQ AB · www.getarq.se",
     built: "Built in the Nordics ▲ Made for the field",
   },
 };
