@@ -93,7 +93,7 @@ const sv = {
     line1accent: "BYGGARE",
     line2: "INTE AV",
     line2accent: "KONSULTER",
-    body: "20+ år på riktiga byggplatser. ~90 funktioner inbyggda i nordiska standarder. ArQ körs i lastbilen, i gropen, på ställningen — där jobbet faktiskt händer.",
+    body: "20+ år på riktiga byggplatser. ~90 edge ai-funktioner inbyggda i nordiska standarder. ArQ körs i lastbilen, i gropen, på platsen, där jobbet faktiskt händer.",
     tags: ["▲ Fältet först", "● Nordiskbyggt", "■ Inga krumbukter", "◆ Byggt för gänget"],
   },
   pilots: {
@@ -246,7 +246,7 @@ const en = {
     line1accent: "BUILDERS",
     line2: "NOT BY",
     line2accent: "CONSULTANTS",
-    body: "20+ years on real sites. ~90 functions baked into Nordic standards. ArQ runs in the truck, in the trench, on the scaffold — where the work actually happens.",
+    body: "20+ years on real sites. ~90 edge ai functions baked into Nordic standards. ArQ runs in the truck, in the trench, on the site, where the work actually happens.",
     tags: ["▲ Field-first", "● Nordic-built", "■ No BS", "◆ Made for the crew"],
   },
   pilots: {
