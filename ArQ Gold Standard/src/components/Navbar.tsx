@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/arq-logo.png";
+import logo from "@/assets/arq-logo.svg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { Lang } from "@/i18n/translations";
 
@@ -99,7 +99,7 @@ export default function Navbar() {
           {/* Left: Logo + nav links */}
           <div className="flex items-center gap-8">
             <a href="#" className="flex items-center">
-              <img src={logo} alt="ArQ" className="h-7 w-auto brightness-0 invert" />
+              <img src={logo} alt="ArQ" className="h-7 w-auto" />
             </a>
             <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((l) => (

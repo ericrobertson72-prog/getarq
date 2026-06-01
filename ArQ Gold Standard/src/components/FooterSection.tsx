@@ -1,5 +1,5 @@
 import { Linkedin } from "lucide-react";
-import logo from "@/assets/arq-logo.png";
+import logo from "@/assets/arq-logo.svg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function FooterSection() {
@@ -16,7 +16,7 @@ export default function FooterSection() {
 
         <div className="grid md:grid-cols-12 gap-8 items-end relative">
           <div className="md:col-span-5">
-            <img src={logo} alt="ArQ" className="h-10 w-auto brightness-0 invert mb-4" />
+            <img src={logo} alt="ArQ" className="h-10 w-auto mb-4" />
             <p className="text-muted-foreground text-sm max-w-xs">{f.tagline}</p>
           </div>
 
