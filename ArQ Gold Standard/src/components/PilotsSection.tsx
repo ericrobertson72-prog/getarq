@@ -10,6 +10,7 @@ export default function PilotsSection() {
       <div className="container mx-auto px-6">
 
         <div className="mb-14">
+          <div className="sticker mb-6">◆ Pilots</div>
           <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] text-foreground leading-[0.95]">
             {p.heading} <span className="text-primary">{p.headingAccent}.</span>
           </h2>
