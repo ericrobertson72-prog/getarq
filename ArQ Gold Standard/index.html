@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="sv">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArQ — Bygg mer. Snabbare. Smartare.</title>
-    <meta name="description" content="Exekveringssystemet för dig som faktiskt bygger. Mindre papper. Mer framsteg. Boka demo." />
+    <title>ArQ — Build More. Faster. Smarter.</title>
+    <meta name="description" content="The execution system built for the people who actually build. Less paperwork, more progress. Book a demo now." />
     <meta name="author" content="ArQ AB" />
 
     <!--
@@ -25,8 +25,7 @@
           var nav = (navigator.language || "").toLowerCase().split("-")[0];
           var lang = (stored === "sv" || stored === "en") ? stored
                    : (nav === "sv") ? "sv"
-                   : (nav && nav !== "sv") ? "en"
-                   : "sv";
+                   : "en";
           document.documentElement.lang = lang;
           document.title = META[lang].title;
           var d = document.querySelector('meta[name="description"]');

@@ -38,12 +38,12 @@ function resolveInitialLang(): Lang {
   if ((SUPPORTED as readonly string[]).includes(prefix)) {
     return prefix as Lang;
   }
-  // Non-Swedish browser → English. Swedish remains default for unknown locales (Nordic focus).
-  return prefix && prefix !== "sv" ? "en" : "sv";
+  // English is the global default; Swedish only for explicitly Swedish browsers.
+  return prefix === "sv" ? "sv" : "en";
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(resolveInitialLang);
+  const [lang, setLangState] = useState<Lang>(resolveInitialLang ?? "en");
 
   // Sync <html lang>, document.title, meta description, and og:* tags on every change.
   // Critical for screen readers, SEO, OG previews, and browser translation features.

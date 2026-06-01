@@ -18,7 +18,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-6">
-            <div className="sticker sticker-solid mb-6">{c.tag}</div>
+            <div className="sticker mb-6">{c.tag}</div>
             <h2 className="font-display text-[clamp(3rem,9vw,8rem)] text-foreground leading-[0.9]">
               {c.h2line1}<br />
               {c.h2line2} <span className="text-primary">{c.h2accent}</span>.<br />

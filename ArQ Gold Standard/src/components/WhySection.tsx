@@ -19,7 +19,7 @@ export default function WhySection() {
 
       <div className="container mx-auto px-6 relative">
         <div className="max-w-4xl">
-          <div className="sticker sticker-solid mb-8">{w.tag}</div>
+          <div className="sticker mb-8">{w.tag}</div>
           <p className="font-display text-[clamp(2.5rem,7vw,6.5rem)] text-foreground leading-[0.95]">
             {w.line1} <span className="text-primary">{w.line1accent}</span>.<br />
             {w.line2} <span className="text-primary">{w.line2accent}</span>.
