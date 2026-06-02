@@ -1,8 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Tally embed script loader — idempotent, safe to call multiple times.
 function loadTally() {
   if (typeof window === "undefined") return;
   if ((window as any).Tally) {
@@ -20,10 +19,35 @@ function loadTally() {
 export default function ContactSection() {
   const { t, lang } = useLanguage();
   const c = t.contact;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Tally sends iframe height via postMessage on load AND after field interactions.
+  // We also re-trigger loadEmbeds on resize so Tally recalculates layout.
+  const handleMessage = useCallback((e: MessageEvent) => {
+    if (!e.data || typeof e.data !== "object") return;
+    if (e.data.type !== "tally-height" && e.data.event !== "Tally.FormLoaded") return;
+    const height = e.data.height ?? e.data.payload?.height;
+    if (height && iframeRef.current) {
+      iframeRef.current.style.height = `${height}px`;
+    }
+  }, []);
+
+  const handleResize = useCallback(() => {
+    // Ask Tally to recalculate height after layout reflow
+    if ((window as any).Tally) {
+      (window as any).Tally.loadEmbeds();
+    }
+  }, []);
 
   useEffect(() => {
     loadTally();
-  }, []);
+    window.addEventListener("message", handleMessage);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [handleMessage, handleResize]);
 
   return (
     <section id="contact" className="relative py-16 md:py-24 bg-background overflow-hidden">
@@ -79,13 +103,14 @@ export default function ContactSection() {
               className="bg-card border border-primary/15 p-8 md:p-10 corner-brackets"
             >
               <iframe
+                ref={iframeRef}
                 key={lang}
                 data-tally-src="https://tally.so/embed/RGkrll?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                 loading="lazy"
                 width="100%"
-                height="400"
+                height="500"
                 title="Book a demo"
-                style={{ border: "none" }}
+                style={{ border: "none", transition: "height 0.2s ease" }}
               />
             </motion.div>
           </div>
