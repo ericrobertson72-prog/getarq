@@ -66,7 +66,7 @@ export default function HeroSection() {
                 {t.hero.cta1}
               </a>
               <a
-                href="#problem"
+                href="#system"
                 className="inline-flex items-center gap-3 px-7 py-4 border border-foreground/20 text-foreground font-mono font-bold text-sm uppercase tracking-widest hover:border-primary hover:text-primary transition-colors"
               >
                 {t.hero.cta2}
