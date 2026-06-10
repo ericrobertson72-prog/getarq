@@ -21,7 +21,7 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.div style={{ opacity }} className="container mx-auto px-6 pt-24 md:pt-32 pb-16 md:pb-12 relative">
-        <div className="grid lg:grid-cols-12 gap-10 items-end">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
           <div className="lg:col-span-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -78,14 +78,14 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-4 hidden lg:block"
+            className="lg:col-span-4"
           >
-            <div className="relative max-h-[580px] flex justify-center">
+            <div className="relative max-h-[340px] lg:max-h-[580px] flex justify-center">
               <div className="absolute -inset-6 bg-primary/10 blur-3xl" />
               <img
                 src={heroImage}
                 alt="ArQ app on a rugged phone at a construction site"
-                className="relative w-auto h-auto max-w-full max-h-[580px] object-contain"
+                className="relative w-auto h-auto max-w-full max-h-[340px] lg:max-h-[580px] object-contain"
                 loading="eager"
               />
             </div>
