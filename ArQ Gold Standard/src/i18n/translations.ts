@@ -150,7 +150,7 @@ const sv = {
       { label: "System", href: "#system" },
       { label: "Kontakt", href: "#contact" },
     ],
-    copy: "© 2025 ArQ AB · www.getarq.se",
+    copy: "© 2025 ArQ · www.getarq.se",
     built: "Byggt i Norden ▲ För fältet",
   },
 };
@@ -305,7 +305,7 @@ const en = {
       { label: "System", href: "#system" },
       { label: "Contact", href: "#contact" },
     ],
-    copy: "© 2025 ArQ AB · www.getarq.se",
+    copy: "© 2025 ArQ · www.getarq.se",
     built: "Built in the Nordics ▲ Made for the field",
   },
 };
