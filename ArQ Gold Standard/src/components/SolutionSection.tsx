@@ -1,13 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import screenDash from "@/assets/screen-dashboard.png";
-import screenProjects from "@/assets/screen-projects.png";
-import screenMap from "@/assets/screen-map.png";
-import screenDetail from "@/assets/screen-detail.png";
-import screenNav from "@/assets/screen-nav.png";
+import screen1 from "@/assets/screen1.png";
+import screen2 from "@/assets/screen2.png";
+import screen3 from "@/assets/screen3.png";
+import screen4 from "@/assets/screen4.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const screenImages = [screenDash, screenProjects, screenNav, screenDetail, screenMap];
+const screenImages = [screen1, screen2, screen3, screen4];
 
 export default function SolutionSection() {
   const { t } = useLanguage();
