@@ -13,7 +13,7 @@ export default function WhySection() {
 
   return (
     <>
-      <section ref={ref} className="relative h-[70vh] min-h-[500px] overflow-hidden flex items-center">
+      <section ref={ref} className="relative min-h-[400px] overflow-hidden py-16 md:py-24 flex items-center">
         <motion.div style={{ y }} className="absolute inset-0 -z-10">
           <img src={pickup} alt="" className="w-full h-[120%] object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-background/70" />
