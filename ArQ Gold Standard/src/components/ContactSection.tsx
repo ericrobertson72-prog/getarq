@@ -53,7 +53,7 @@ export default function ContactSection() {
     <section id="contact" className="relative py-16 md:py-24 bg-background overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-40 -z-10" />
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-12">
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
 
           {/* Left — heading + contact links */}
           <div className="lg:col-span-6">

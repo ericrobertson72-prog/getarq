@@ -7,9 +7,9 @@ export default function ProblemSection() {
   const p = t.problem;
 
   return (
-    <section id="problem" className="relative bg-background py-24 md:py-32 overflow-hidden">
+    <section id="problem" className="relative bg-background py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid lg:grid-cols-12 gap-6 md:gap-12 mb-8 md:mb-16">
           <div className="lg:col-span-5">
             <div className="sticker mb-6">{p.tag}</div>
             <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] text-foreground leading-[0.95]">

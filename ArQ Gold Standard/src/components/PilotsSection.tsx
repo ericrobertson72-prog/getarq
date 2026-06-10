@@ -9,7 +9,7 @@ export default function PilotsSection() {
     <section id="pilots" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6">
 
-        <div className="mb-14">
+        <div className="mb-8 md:mb-14">
           <div className="sticker mb-6">◆ Pilots</div>
           <h2 className="font-display text-[clamp(2.5rem,7vw,6rem)] text-foreground leading-[0.95]">
             {p.heading} <span className="text-primary">{p.headingAccent}.</span>

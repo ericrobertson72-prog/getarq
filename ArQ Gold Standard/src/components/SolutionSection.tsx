@@ -17,8 +17,8 @@ export default function SolutionSection() {
   const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"]);
 
   return (
-    <section ref={ref} id="system" className="relative bg-card py-24 md:py-32 overflow-hidden">
-      <div className="container mx-auto px-6 mb-16">
+    <section ref={ref} id="system" className="relative bg-card py-16 md:py-24 overflow-hidden">
+      <div className="container mx-auto px-6 mb-8 md:mb-16">
         <div className="grid lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-7">
             <div className="sticker mb-6">{s.tag}</div>
@@ -55,7 +55,7 @@ export default function SolutionSection() {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-6 mt-20">
+      <div className="container mx-auto px-6 mt-10 md:mt-20">
         <div className="grid md:grid-cols-3 gap-px bg-primary/15">
           {s.pillars.map((b, i) => (
             <motion.div

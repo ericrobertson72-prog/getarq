@@ -26,7 +26,7 @@ export default function WhySection() {
           </p>
           <p className="text-foreground/80 text-lg md:text-xl max-w-2xl mt-8">{w.body}</p>
 
-          <div className="mt-12 flex flex-wrap gap-3">
+          <div className="mt-8 md:mt-12 flex flex-wrap gap-3">
             {w.tags.map((tag) => (
               <span key={tag} className="sticker">{tag}</span>
             ))}
