@@ -37,14 +37,18 @@ export default function WhySection() {
         </div>
       </section>
 
-      <div className="relative overflow-hidden">
-        <img
-          src={builderImage}
-          alt="Builder on construction site"
-          className="w-full aspect-[4/5] md:aspect-[16/9] object-cover object-[center_25%]"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/60" />
+      <div className="bg-background">
+        <div className="container mx-auto px-6">
+          <div className="relative overflow-hidden">
+            <img
+              src={builderImage}
+              alt="Builder on construction site"
+              className="w-full aspect-[4/5] md:aspect-[16/9] object-cover object-[center_25%]"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/60" />
+          </div>
+        </div>
       </div>
     </>
   );
