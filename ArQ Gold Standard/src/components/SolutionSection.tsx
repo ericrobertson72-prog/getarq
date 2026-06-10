@@ -5,9 +5,12 @@ import screen1 from "@/assets/screen1.png";
 import screen2 from "@/assets/screen2.png";
 import screen3 from "@/assets/screen3.png";
 import screen4 from "@/assets/screen4.png";
+import screen5 from "@/assets/screen5.png";
+import screen6 from "@/assets/screen6.png";
+import screen7 from "@/assets/screen7.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const screenImages = [screen1, screen2, screen3, screen4];
+const screenImages = [screen1, screen2, screen3, screen4, screen5, screen6, screen7];
 
 type Pos = "active" | "right" | "left" | "hidden";
 

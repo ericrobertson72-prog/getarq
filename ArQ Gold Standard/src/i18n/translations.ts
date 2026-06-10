@@ -70,6 +70,9 @@ const sv = {
       { tag: "02 / Projekt", title: "Alla jobb, ett ställe" },
       { tag: "03 / Arbetsflöde", title: "Från plan till faktura" },
       { tag: "04 / Aktivitet", title: "Signering på plats" },
+      { tag: "05 / Planering", title: "Uppgifter & tidplan" },
+      { tag: "06 / Kvalitet", title: "KMA i arbetsflödet" },
+      { tag: "07 / Ekonomi", title: "Faktura mot utfört arbete" },
     ],
     pillars: [
       {
@@ -224,6 +227,9 @@ const en = {
       { tag: "02 / Projects", title: "Every job, one place" },
       { tag: "03 / Workflow", title: "From plan to invoice" },
       { tag: "04 / Activity", title: "Sign-off on the spot" },
+      { tag: "05 / Planning", title: "Tasks & schedule" },
+      { tag: "06 / Quality", title: "QA in the workflow" },
+      { tag: "07 / Finance", title: "Invoice against completed work" },
     ],
     pillars: [
       {
