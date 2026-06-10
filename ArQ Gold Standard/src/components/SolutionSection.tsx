@@ -1,5 +1,6 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import screen1 from "@/assets/screen1.png";
 import screen2 from "@/assets/screen2.png";
 import screen3 from "@/assets/screen3.png";
@@ -11,12 +12,40 @@ const screenImages = [screen1, screen2, screen3, screen4];
 export default function SolutionSection() {
   const { t } = useLanguage();
   const s = t.solution;
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-60%"]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const getCardWidth = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return 0;
+    const card = container.children[0] as HTMLElement;
+    return card ? card.offsetWidth + 24 : 0; // 24 = gap-6
+  }, []);
+
+  const scrollTo = useCallback((index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const card = container.children[index] as HTMLElement;
+    if (!card) return;
+    container.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    setActiveIndex(index);
+  }, []);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const onScroll = () => {
+      const cardWidth = getCardWidth();
+      if (!cardWidth) return;
+      const idx = Math.round(container.scrollLeft / cardWidth);
+      setActiveIndex(Math.max(0, Math.min(idx, s.screens.length - 1)));
+    };
+    container.addEventListener("scroll", onScroll, { passive: true });
+    return () => container.removeEventListener("scroll", onScroll);
+  }, [getCardWidth, s.screens.length]);
 
   return (
-    <section ref={ref} id="system" className="relative bg-card py-16 md:py-24 overflow-hidden">
+    <section id="system" className="relative bg-card py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-6 mb-8 md:mb-16">
         <div className="grid lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-7">
@@ -32,26 +61,62 @@ export default function SolutionSection() {
         </div>
       </div>
 
-      {/* Horizontal scroll showcase */}
-      <div className="relative">
-        <motion.div style={{ x }} className="flex gap-6 will-change-transform pl-6">
-          {s.screens.map((screen, i) => (
-            <div key={screen.tag} className="shrink-0 w-[80vw] md:w-[55vw] lg:w-[42vw]">
-              <div className="relative aspect-[16/10] overflow-hidden bg-background border border-primary/15 corner-brackets">
-                <img
-                  src={screenImages[i]}
-                  alt={screen.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="mt-4 flex items-baseline justify-between">
-                <span className="font-mono text-xs text-primary uppercase tracking-widest">{screen.tag}</span>
-                <h3 className="font-display text-2xl text-foreground">{screen.title}</h3>
-              </div>
+      {/* Scrollable carousel */}
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory pl-6 pr-6"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {s.screens.map((screen, i) => (
+          <div key={screen.tag} className="snap-start shrink-0 w-[80vw] md:w-[55vw] lg:w-[42vw]">
+            <div className="relative aspect-[16/10] overflow-hidden bg-background border border-primary/15 corner-brackets">
+              <img
+                src={screenImages[i]}
+                alt={screen.title}
+                loading="lazy"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
+            <div className="mt-4 flex items-baseline justify-between">
+              <span className="font-mono text-xs text-primary uppercase tracking-widest">{screen.tag}</span>
+              <h3 className="font-display text-2xl text-foreground">{screen.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation: dots + arrows */}
+      <div className="container mx-auto px-6 mt-6 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {s.screens.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === activeIndex ? "w-6 bg-primary" : "w-1.5 bg-primary/30"
+              }`}
+            />
           ))}
-        </motion.div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => scrollTo(Math.max(0, activeIndex - 1))}
+            disabled={activeIndex === 0}
+            aria-label="Previous"
+            className="p-2 border border-primary/20 text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={() => scrollTo(Math.min(s.screens.length - 1, activeIndex + 1))}
+            disabled={activeIndex === s.screens.length - 1}
+            aria-label="Next"
+            className="p-2 border border-primary/20 text-muted-foreground hover:border-primary hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
       </div>
 
       <div className="container mx-auto px-6 mt-10 md:mt-20">
