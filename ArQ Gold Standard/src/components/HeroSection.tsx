@@ -80,12 +80,12 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="lg:col-span-4"
           >
-            <div className="relative max-h-[340px] lg:max-h-[580px] flex justify-center">
+            <div className="relative w-full aspect-[3/4] lg:aspect-auto lg:max-h-[580px] overflow-hidden flex items-center justify-center">
               <div className="absolute -inset-6 bg-primary/10 blur-3xl" />
               <img
                 src={heroImage}
                 alt="ArQ app on a rugged phone at a construction site"
-                className="relative w-auto h-auto max-w-full max-h-[340px] lg:max-h-[580px] object-contain"
+                className="relative w-full h-full object-contain lg:w-auto lg:h-auto lg:max-w-full lg:max-h-[580px]"
                 loading="eager"
               />
             </div>
