@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import pickup from "@/assets/lifestyle-pickup.jpg";
-import builderImage from "@/assets/lifestyle-builder.jpg";
+import builderImage from "@/assets/lifestyle2.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function WhySection() {
